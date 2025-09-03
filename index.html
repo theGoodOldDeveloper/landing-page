@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAGozat – The AI Generation</title>
+    <meta name="description" content="AI szakkör 5–8. osztályosoknak – játékos, motiváló, érthető. TAGozat.hu" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            green: '#22f29b',
+                            blue: '#22d3ee'
+                        }
+                    },
+                    boxShadow: {
+                        soft: '0 10px 25px -10px rgba(0,0,0,0.15)'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- Icons (optional: Heroicons via inline SVG) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Cantarell, Noto Sans, Ubuntu, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+        /* Tailwind CDN nem dolgozza fel az @apply-t, ezért plain CSS */
+        .card { background-color: #ffffff; border-radius: 1rem; box-shadow: 0 10px 25px -10px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; }
+        .tag-gradient { background: linear-gradient(90deg, #22f29b 0%, #22d3ee 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    </style>
+</head>
+
+<body class="min-h-screen bg-slate-950 text-slate-100 selection:bg-neon-blue/30">
+    <!-- Background deco -->
+    <div aria-hidden="true" class="fixed inset-0 -z-10">
+        <div class="absolute -top-32 -left-24 w-72 h-72 bg-neon-blue/20 blur-3xl rounded-full"></div>
+        <div class="absolute top-1/3 -right-16 w-80 h-80 bg-neon-green/10 blur-3xl rounded-full"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 border-b border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="h-9 w-9 rounded-lg bg-gradient-to-tr from-neon-green to-neon-blue grid place-items-center shadow-soft">
+                        <span class="text-slate-900 font-extrabold">T</span>
+                    </div>
+                    <div class="leading-tight">
+                        <div class="text-xl sm:text-2xl font-extrabold tracking-tight">
+                            <span class="tag-gradient">TAG</span><span class="text-slate-400">ozat</span>
+                        </div>
+                        <div class="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-slate-400">
+                            <span class="tag-gradient">T</span>he <span class="tag-gradient">A</span>I <span class="tag-gradient">G</span>eneration
+                        </div>
+                    </div>
+                </a>
+
+                <button id="openContact" class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-semibold text-white shadow-soft hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-neon-blue">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75l8.954 5.372a2.25 2.25 0 002.292 0L22.5 6.75M3.75 17.25h16.5a1.5 1.5 0 001.5-1.5V7.06a1.5 1.5 0 00-.78-1.312l-7.5-4.167a1.5 1.5 0 00-1.44 0l-7.5 4.167A1.5 1.5 0 003 7.06v8.69a1.5 1.5 0 001.5 1.5z" />
+                    </svg>
+                    Kapcsolat
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Intro lead-in -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-6">
+        <div class="grid md:grid-cols-2 gap-6 items-stretch">
+            <div class="card p-6 sm:p-8" data-aos="fade-up">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900">
+                    AI szakkör 5–8. osztálynak – játékosan, érthetően, biztonságosan
+                </h1>
+                <p class="mt-4 text-slate-600 text-base sm:text-lg">
+                    Az MI nem kopogtat, <span class="font-semibold">már berúgta az ajtót</span> 😄 – mi pedig megmutatjuk,
+                    hogyan lehet vele okosan együttműködni. Gyereknyelven magyarázva, mégis komolyan véve a jövőt.
+                </p>
+                <div class="mt-6 flex flex-wrap items-center gap-3">
+                    <a href="#apply" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-tr from-neon-green to-neon-blue px-5 py-3 text-slate-900 font-extrabold shadow-soft hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-neon-blue">
+                        Jelentkezem!
+                    </a>
+                    <a href="#about" class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-slate-700 font-semibold shadow-soft hover:bg-slate-50">
+                        Részletek
+                    </a>
+                </div>
+            </div>
+            <div class="card p-0 overflow-hidden relative" data-aos="fade-up" data-aos-delay="100">
+                <div class="absolute inset-0 bg-gradient-to-tr from-neon-green/20 to-neon-blue/30"></div>
+                <div class="flex items-center justify-center p-4 sm:p-6 min-h-[280px] md:min-h-[360px]">
+                    <div class="p-0">
+                        <figure class="text-center mx-auto md:mx-0">
+                            <img src="images/first-manual-chatbot.jpeg" alt="Chatbot illusztráció" class="w-64 sm:w-80 md:w-[26rem] lg:w-[30rem] h-auto object-contain rounded-xl shadow-soft" loading="lazy" />
+                            <figcaption class="mt-3 text-slate-700 text-sm font-medium">A világ első papíralapú chatbotja. - Retro AI 1.0</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="card p-6 sm:p-8" data-aos="fade-up">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Miért fontos az MI-vel barátkozni?</h2>
+            <p class="mt-4 text-slate-600">
+                A mesterséges intelligencia úgy alakítja át a tanulást és a munkát, mint a GPS a térképolvasást. Nem csal, hanem gyorsít, irányt mutat, és közben megtanít jobban kérdezni. Nálunk a gyerekek megtanulják:
+            </p>
+            <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-slate-700">
+                <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-neon-green"></span> hogyan gondolkodjanak problémamegoldó fejjel;</li>
+                <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-neon-blue"></span> hogyan kérdezzenek okosan (promptolás);</li>
+                <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-neon-green"></span> mit tudnak és mit nem az AI-modellek;</li>
+                <li class="flex items-start gap-3"><span class="mt-1 h-2.5 w-2.5 rounded-full bg-neon-blue"></span> és biztonságosan használni a netet és az AI-t.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Program details -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-6 sm:p-8" data-aos="fade-up">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Mit tanulunk? – Érthetően, lépésről lépésre</h3>
+                <ul class="mt-4 space-y-3 text-slate-700">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 h-2.5 w-2.5 rounded-full bg-neon-green"></span>
+                        <span><b>Hardver és szoftver alapok</b> – mi miért történik a gépben?</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 h-2.5 w-2.5 rounded-full bg-neon-blue"></span>
+                        <span><b>Promptolás</b> – hogyan kérdezzünk jól, hogy jó választ kapjunk?</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 h-2.5 w-2.5 rounded-full bg-neon-green"></span>
+                        <span><b>AI-modellek</b> – mit tud ChatGPT, DALL·E, Copilot és a többiek?</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 h-2.5 w-2.5 rounded-full bg-neon-blue"></span>
+                        <span><b>Webfejlesztés</b> – HTML, CSS (Tailwind), JavaScript alapon.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-2 h-2.5 w-2.5 rounded-full bg-neon-green"></span>
+                        <span><b>Chatbot készítés</b> – Botpress-szel saját segítő robot.</span>
+                    </li>
+                </ul>
+                <p class="mt-4 text-slate-600">
+                    Féléves rendszerben dolgozunk, és a végére minden diák <b>saját weboldalt</b> és <b>működő chatbotot</b> készít.
+                </p>
+            </div>
+            <div class="card p-6 sm:p-8" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Hogyan néz ki egy óra?</h3>
+                <p class="mt-3 text-slate-600">
+                    Rövid, érthető magyarázat – sok gyakorlás – menő mini-projektek. Nem kell előtudás: mindenki nulláról indulhat, és lépésről lépésre építkezünk.
+                </p>
+                <div class="mt-6 grid sm:grid-cols-2 gap-4">
+                    <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-soft">
+                        <div class="text-sm font-semibold text-slate-700">Junior</div>
+                        <div class="mt-1 text-slate-500">5–6. osztály • alapok élvezetesen</div>
+                    </div>
+                    <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-soft">
+                        <div class="text-sm font-semibold text-slate-700">Senior</div>
+                        <div class="mt-1 text-slate-500">7–8. osztály • mélyebb megértés</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- eBook CTA -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="card p-6 sm:p-8" data-aos="fade-up">
+            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Öntudatra ébredhet-e az AI, avagy a Skynet realitása…</h3>
+            <p class="mt-3 text-slate-600">Ingyenes mini eBook szülőknek és diákoknak – röviden, közérthetően, félelemkeltés nélkül.</p>
+            <div class="mt-5">
+                <a href="https://preview.mailerlite.io/forms/1669220/160082065423861690/share" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-tr from-neon-green to-neon-blue px-5 py-3 text-slate-900 font-extrabold shadow-soft hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-neon-blue">
+                    eBook letöltése
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apply CTA -->
+    <section id="apply" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="card p-6 sm:p-8 flex items-center justify-between gap-6 flex-col sm:flex-row bg-gradient-to-tr from-neon-blue via-white to-neon-green shadow-lg" data-aos="fade-up">
+            <div>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Készen álltok? Vágjunk bele!</h3>
+                <p class="mt-2 text-slate-600">1 kattintás, és már indulhat is a kaland az MI világában.</p>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 rounded-xl bg-gradient-to-tr from-neon-green to-neon-blue px-6 py-3 text-slate-900 font-extrabold shadow-soft hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-neon-blue text-lg sm:text-xl">
+                Jelentkezem!
+            </a>
+        </div>
+    </section>
+
+    <!-- Info block -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+        <div class="card p-6 sm:p-8" data-aos="fade-up">
+            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900">Fontos tudnivalók</h3>
+            <div class="mt-5 grid md:grid-cols-2 gap-6 text-slate-700">
+                <ul class="space-y-2">
+                    <li><b>Bevezető ár</b> – csak az induló csoportnak! <b>1 800 Ft / 60 perc / fő</b></li>
+                    <li><b>Jelentkezési határidő</b>: <b>szept. 14. éjfél</b></li>
+                    <li><b>Jelentkezés módja</b>: papíron osztályfőnöknél vagy online (szept. 4–14. között)</li>
+                    <li><b>Időpontok</b>:
+                        <ul class="mt-1 ml-4 list-disc list-inside">
+                            <li>Junior: kedd 15:00–16:00</li>
+                            <li>Senior: szerda 15:00–16:00</li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="space-y-2">
+                    <li><b>Helyszín</b>: Gyöngyösi Felsővárosi Ált. Isk. – informatika terem</li>
+                    <li><b>Kezdés</b>: 2025. szept. 16. • Féléves program (~20 alkalom)</li>
+                    <li><b>Díjfizetés</b>: havonta előre, elmaradt órák nem kerülnek felszámításra</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 border-t border-white/10">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid md:grid-cols-3 gap-6 items-start">
+                <div>
+                    <div class="text-lg font-extrabold">
+                        <span class="tag-gradient">TAG</span><span class="text-slate-400">ozat</span>
+                    </div>
+                    <p class="mt-2 text-slate-400 text-sm">Több évtizedes IT tapasztalat, és elhivatottság az AI tanításában.</p>
+                </div>
+                <div class="md:col-span-2 grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <div class="text-sm font-semibold text-slate-300">Impresszum</div>
+                        <ul class="mt-2 text-slate-400 text-sm space-y-1">
+                            <li>Végh Tibor</li>
+                            <li>📞 +36 30 9283-653</li>
+                            <li>📧 thegoodolddeveloper@gmail.com</li>
+                            <li>🌐 thegoodolddeveloper.com</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-slate-300">Kapcsolat</div>
+                        <button id="openContactFooter" class="mt-2 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-white/10">Írj nekünk</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 text-center text-xs text-slate-500">© <span id="year"></span> TAGozat • Minden jog fenntartva</div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60"></div>
+        <div class="relative mx-auto max-w-md px-4 h-full flex items-center justify-center">
+            <div class="card w-full p-6 sm:p-8 relative" data-aos="zoom-in" data-aos-once="true">
+                <button id="closeContact" class="absolute top-3 right-3 rounded-lg p-2 text-slate-500 hover:bg-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h4 class="text-xl font-extrabold text-slate-900">Kapcsolat</h4>
+                <ul class="mt-4 text-slate-700 space-y-1">
+                    <li>Végh Tibor</li>
+                    <li>📞 +36 30 9283-653</li>
+                    <li>📧 thegoodolddeveloper@gmail.com</li>
+                    <li>🌐 thegoodolddeveloper.com</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
+
+
